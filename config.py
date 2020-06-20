@@ -1,6 +1,6 @@
 class Config:
-    APP_URL = 'http://0.0.0.0:5006'
-    GATEWAY_SERVICE_URL = 'http://0.0.0.0:5005'
+    APP_URL = 'https://third-party-application.herokuapp.com'
+    GATEWAY_SERVICE_URL = 'https://places-info-gateway.herokuapp.com'
 
     APP_ID = '2236408341746309'
     SECRET_KEY = 'places-info-secret-key'
