@@ -1,0 +1,32 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{super()}}
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon" sizes="48x48"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.css">
+{% endblock %}
+
+{% block title %}
+Third party app example - Пример стороннего приложения
+{% endblock %}
+
+{% block content %}
+<!--Всплывающие сообщения-->
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message[0] }}" role="alert">{{ message[1] }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+
+<!--Контент страницы-->
+<div class="container">
+    {% block app_content %}
+    {% endblock %}
+</div>
+
+{% endblock %}

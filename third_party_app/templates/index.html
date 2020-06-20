@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div class="panel panel-default"
+     style="padding-bottom: 20px; padding-left: 30px; padding-right: 30px; background: #FCFCFC; border-color: #F0F0F0;">
+    <div class="panel-body">
+        <div align="center">
+            <font color="#343434" size="5rem">
+                <b>Third party application example</b>
+            </font>
+            <br><br><br>
+
+            {% if session['login'] %}
+            <p>Вы вошли как <b>{{ session['login'] }}</b></p><br>
+            <a href="{{url_for('index.logout')}}">
+                <button type="button" class="btn btn-primary">Выйти</button>
+            </a>
+            {% else %}
+            <p>Вы вошли как <b>гость</b></p><br>
+            <a href="{{url_for('index.oauth')}}">
+                <button type="button" class="btn btn-primary">Places info OAUTH2</button>
+            </a>
+            {% endif %}
+        </div>
+
+        {% if session['login'] %}
+        <br><br>
+        <font color="#343434" size="4rem">
+            <b>API</b>
+        </font>
+        <br><br>
+
+        {% if tags %}
+        <p><b>Все теги</b></p>
+            {% for tag in tags %}
+                <span class="label label-default">{{ tag["name"] }}</span>
+            {% endfor %}
+        {% endif %}
+
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
